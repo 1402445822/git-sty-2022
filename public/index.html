@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="../static/css/global.css?v=201709221552" />
+<link rel="stylesheet" href="../static/css/layout.css?v=201709221552" />
+<title>test index for Git</title>
+</head>
+<body>
+<noscript>
+<strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+</noscript>
+<div class="app" id="app">
+    <h3>第一行 html 代码</h3>
+    <div>header 完成 100%</div>
+    <div>banner bar 完成 100%</div>
+</div>
+<script>
+(function () {
+    const platform = () => {
+        const UA = navigator.userAgent;
+        return {
+                //IE内核
+            trident: UA.indexOf('Trident') > -1,
+
+            //opera内核
+            presto: UA.indexOf('Presto') > -1,
+
+            //苹果、谷歌内核
+            webKit: UA.indexOf('AppleWebKit') > -1,
+
+            //火狐内核
+            gecko: UA.indexOf('Gecko') > -1 && UA.indexOf('KHTML') == -1,
+
+            //是否为移动终端
+            mobile: Boolean(navigator.userAgent.match(/.*(iphone|ipod|ipad|android|symbian|nokia|blackberry| rim |opera mini|opera mobi|windows ce|windows phone|up\.browser|netfront|palm-|palm os|pre\/|palmsource|avantogo|webos|hiptop|iris|kddi|kindle|lg-|lge|mot-|motorola|nintendo ds|nitro|playstation portable|samsung|sanyo|sprint|sonyericsson|symbian).*/i) || navigator.userAgent.match(/alcatel|audiovox|bird|coral|cricket|docomo|edl|huawei|htc|gt-|lava|lct|lg|lynx|mobile|lenovo|maui|micromax|mot|myphone|nec|nexian|nook|pantech|pg|polaris|ppc|sch|sec|spice|tianyu|ustarcom|utstarcom|videocon|vodafone|winwap|zte/i)),
+
+            //ios终端
+            ios: !!UA.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+
+            //android终端或者uc浏览器
+            android: UA.indexOf('Android') > -1 || UA.indexOf('Linux') > -1,
+
+            //是否为iPhone或者QQ HD浏览器
+            iPhone: UA.indexOf('iPhone') > -1 || UA.indexOf('Mac') > -1,
+
+            //是否iPad
+            iPad: UA.indexOf('iPad') > -1,
+
+            //是否web应该程序，没有头部与底部
+            webApp: UA.indexOf('Safari') == -1,
+
+            //是否微信
+            isWeixin: /MicroMessenger/i.test(UA)
+        }
+    };
+    const setPageWidth = () => {
+        const doc = document.documentElement
+        let docEl = doc || document.body, clientWd = docEl.clientWidth;
+
+        //设置开发模式(移动端MB,电脑端PC)
+        if (platform.mobile) {
+            doc.className = 'model-MB';
+        } else {
+            clientWd = 750;
+            doc.className = 'model-PC';
+        }
+        doc.style.fontSize = clientWd / 7.5 + 'px';
+    };
+    setPageWidth();
+})();
+</script>
+</body>
+</html>
